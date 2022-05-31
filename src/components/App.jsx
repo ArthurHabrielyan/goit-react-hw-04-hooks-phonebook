@@ -12,11 +12,6 @@ export const App = () => {
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
-    !localStorage.readItem(KEY) && localStorage.saveItem(KEY, []);
-    setContacts(localStorage.readItem(KEY));
-  }, []);
-
-  useEffect(() => {
     localStorage.saveItem(KEY, contacts);
   }, [contacts]);
 
