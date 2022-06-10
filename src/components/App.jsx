@@ -8,7 +8,7 @@ import * as localStorage from "./localStorage/localStorageUtils";
 const KEY = "contact_key";
 
 export const App = () => {
-  const [contacts, setContacts] = useState(localStorage.readItem(KEY));
+  const [contacts, setContacts] = useState(localStorage.readItem(KEY) || []);
   const [filter, setFilter] = useState("");
 
   useEffect(() => {
@@ -35,10 +35,10 @@ export const App = () => {
   };
 
   const getVisibleContacts = () => {
-    const toLowerCaseContacts = filter.toLowerCase();
+    const toLowerCaseContacts = filter.toLocaleLowerCase();
 
     return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(toLowerCaseContacts)
+      contact.name.toLocaleLowerCase().includes(toLowerCaseContacts)
     );
   };
 
